@@ -1,0 +1,16 @@
+name: Daily update
+on:
+  schedule:
+    - cron: "42 20 * * *"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Update data
+      env: 
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      run: |
+        python3 ./src/main.py
+        chmod +x ./src/update.sh
+        ./src/update.sh
