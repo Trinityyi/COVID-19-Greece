@@ -1,4 +1,5 @@
 import csv
+from datetime import datetime
 
 csv_files = [
   'data/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv',
@@ -39,5 +40,5 @@ def combine_csvs(csv_filenames, selected_key, selection_key, ignore_keys, common
     for csv_file in csv_files:
       csv_row.update(next(v for v in csv_file if v[common_key] == row[common_key]))
     csv_rows.append(csv_row)
+  csv_rows.sort(key=lambda row: datetime.strptime(row[common_key], '%m/%d/%y'))
   write_to_csv(csv_out_filename, csv_rows, [common_key] + output_keys)
-  
