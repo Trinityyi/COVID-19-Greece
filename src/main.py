@@ -25,3 +25,19 @@ def write_to_csv(csv_file, rows, fieldnames):
     writer.writeheader()
     for row in rows:
       writer.writerow(row)
+
+def combine_csvs(csv_filenames, selected_key, selection_key, ignore_keys, common_key, output_keys, csv_out_filename):
+  csv_files = [
+    transpose_row(
+      read_csv(csv_filename, selected_key, selection_key, ignore_keys),
+      common_key,output_keys[i]
+    ) for i, csv_filename in enumerate(csv_filenames)
+  ]
+  csv_rows=[]
+  for row in csv_files[0]:
+    csv_row ={'{}'.format(common_key): row[common_key]}
+    for csv_file in csv_files:
+      csv_row.update(next(v for v in csv_file if v[common_key] == row[common_key]))
+    csv_rows.append(csv_row)
+  write_to_csv(csv_out_filename, csv_rows, [common_key] + output_keys)
+  
