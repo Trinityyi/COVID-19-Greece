@@ -42,3 +42,13 @@ def combine_csvs(csv_filenames, selected_key, selection_key, ignore_keys, common
     csv_rows.append(csv_row)
   csv_rows.sort(key=lambda row: datetime.strptime(row[common_key], '%m/%d/%y'))
   write_to_csv(csv_out_filename, csv_rows, [common_key] + output_keys)
+
+combine_csvs(
+  csv_files,
+  'Greece',
+  'Country/Region',
+  ['Province/State','Country/Region','Lat','Long'],
+  'Date',
+  ['Confirmed Cases', 'Deceased Cases', 'Recovered Cases'],
+  'time_series_data_grc.csv'
+)
