@@ -12,3 +12,9 @@ def read_csv(csv_file, selected_key, selection_key, ignore_keys=[]):
     keys = [fieldname for fieldname in reader.fieldnames if fieldname not in ignore_keys]
     values = next(v for v in reader if v[selection_key] == selected_key)
   return { k: v for k, v in values.items() if k in keys }
+
+def transpose_row(row_dict, key_colname, value_colname):
+  return [
+    { '{}'.format(key_colname): k, '{}'.format(value_colname): v }
+    for k, v in row_dict.items()
+  ]
