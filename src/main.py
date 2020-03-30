@@ -18,3 +18,10 @@ def transpose_row(row_dict, key_colname, value_colname):
     { '{}'.format(key_colname): k, '{}'.format(value_colname): v }
     for k, v in row_dict.items()
   ]
+
+def write_to_csv(csv_file, rows, fieldnames):
+  with open(csv_file, 'w', newline='') as csv_out:
+    writer = csv.DictWriter(csv_out, fieldnames=fieldnames)
+    writer.writeheader()
+    for row in rows:
+      writer.writerow(row)
