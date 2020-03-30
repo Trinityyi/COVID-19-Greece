@@ -1,7 +1,7 @@
 name: Daily update
 on:
   schedule:
-    - cron: "53 19 * * *"
+    - cron: "2 20 * * *"
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -11,6 +11,7 @@ jobs:
       env: 
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
+        git submodule update --recursive --remote
         python3 ./src/main.py
         chmod +x ./src/update.sh
         ./src/update.sh
