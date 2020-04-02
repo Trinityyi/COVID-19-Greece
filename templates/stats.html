@@ -1,0 +1,336 @@
+<!doctype html>
+<html>
+
+  <head>
+    <title>COVID-19 Virus Outbreak in Greece</title>
+    <meta name="description" content="Data about the COVID-19 outbreak in Greece" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <style>
+      * {
+        font-family: 'Montserrat', sans-serif;
+      }
+
+      h1 {
+        font-weight: 400;
+        font-size: 24px;
+        margin: 0;
+        padding: 4px 8px 0;
+        height: 24px;
+        line-height: 1;
+      }
+
+      p {
+        font-size: 12px;
+        margin: 0;
+        padding: 4px 8px 0;
+        height: 16px;
+        line-height: 1;
+      }
+
+      body {
+        padding: 8px;
+        margin: 0;
+      }
+
+      .stat-box {
+        border: 1px solid rgb(153, 153, 153);
+      }
+
+      .stat-name {
+        text-transform: uppercase;
+        line-height: 1;
+        font-size: 18px;
+        color: #4D4D4D;
+        font-weight: 400;
+        margin: 8px 32px;
+      }
+
+      .stat-value {
+        font-weight: 500;
+        font-size: 32px;
+        line-height: 1;
+        height: calc(100% - 64px);
+        margin: 8px 32px;
+      }
+
+      .stat-diff {
+        margin: 8px 32px;
+        color: #f44336;
+        font-size: 14px;
+        text-align: right;
+      }
+
+      .stat-diff.reverse {
+        color: #388e3c;
+      }
+
+      .stat-wrapper {
+        margin: 0;
+        padding: 16px 8px;
+        width: calc(100vw - 16px - 16px);
+        height: calc(100vh - 26px - 24px - 32px - 16px);
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 4fr 3fr;
+        grid-row-gap: 20px;
+        grid-column-gap: 20px;
+      }
+
+      @media (max-width: 767px) {
+        .stat-wrapper {
+          grid-template-columns: 1fr;
+          grid-template-rows: 0.25fr 0.25fr 0.25fr 0.25fr 3fr 1.5fr 1.5fr;
+          height: 300vh;
+          width: calc(100vw - 16px - 24px);
+        }
+
+        h1 {
+          margin-bottom: 16px;
+        }
+      }
+
+      @media (min-width: 768px) {
+        #cases-graph {
+          grid-column-start: 1;
+          grid-column-end: 4;
+          grid-row-start: 2;
+          grid-row-end: 4;
+        }
+      }
+
+      li.tooltip-line {
+        font-size: 11px;
+        color: #000000;
+        opacity: 1;
+        margin: 0;
+        font-style: none;
+        text-decoration: none;
+      }
+
+      li.tooltip-line:first-child {
+        font-weight: bold;
+      }
+
+    </style>
+    <script type="text/javascript">
+      google.charts.load("current", {
+        packages: ["corechart"]
+      });
+      google.charts.setOnLoadCallback(drawCharts);
+      function drawCharts() {
+
+        var genderData = google.visualization.arrayToDataTable([
+          ['Gender', 'Cases by Gender'],
+          {%- for row in gender_data -%}
+            {%- autoescape false %}
+              {{ '["{g}", {v}],'.format(g = row['Gender'], v = row['Cases by Gender'] ) }}
+            {%- endautoescape %}
+          {%- endfor %}
+        ]);
+
+        var genderOptions = {
+          title: 'Gender',
+          pieHole: 0.5,
+          colors: ['#64b5f6', '#f8bbd0'],
+          legend: {
+            position: 'bottom'
+          },
+          titleTextStyle: {
+            fontSize: 20,
+            bold: false
+          },
+          pieSliceTextStyle: {
+            color: '#000',
+            fontSize: 14
+          },
+          chartArea: {
+            top: '12.5%',
+            left: '12.5%',
+            width: '75%',
+            height: '75%'
+          }
+        };
+
+        var genderChart = new google.visualization.PieChart(document.getElementById('gender-pie'));
+        genderChart.draw(genderData, genderOptions);
+
+        var ageData = google.visualization.arrayToDataTable([
+          ['Age Group', 'Age Distribution'],
+          {%- for row in age_data -%}
+            {%- autoescape false %}
+              {{ '["{g}", {v}],'.format(g = row['Age'], v = row['Count']) }}
+            {%- endautoescape %}
+          {%- endfor %}
+        ]);
+
+        var ageView = new google.visualization.DataView(ageData);
+        ageView.setColumns([0, 1,
+          {
+            calc: (dataTable, rowNum) => `${(dataTable.getValue(rowNum, 1)*100).toFixed(1)}%`,
+            sourceColumn: 1,
+            type: 'string',
+            role: 'annotation'
+          },
+          {
+            calc: (dataTable, rowNum) => `<ul class="google-visualization-tooltip-item-list"><li class="tooltip-line google-visualization-tooltip-item">${dataTable.getValue(rowNum, 0)}</li><li class="tooltip-line google-visualization-tooltip-item">Age Distribution: <strong>${(dataTable.getValue(rowNum, 1)*100).toFixed(1)}%</strong></li></ul>`,
+            sourceColumn: 1,
+            type: 'string',
+            role: 'tooltip',
+            properties: {
+              html: true
+            }
+          }
+        ]);
+
+        var ageOptions = {
+          tooltip: {
+            isHtml: true
+          },
+          hAxis: {
+            format: 'percent'
+          },
+          bar: {
+            groupWidth: '95%'
+          },
+          legend: {
+            position: 'top',
+            maxLines: 2
+          },
+          colors: ['rgb(240, 98, 146)']
+        };
+
+        var ageChart = new google.visualization.BarChart(document.getElementById('age-graph'));
+        ageChart.draw(ageView, ageOptions);
+
+        var caseData = google.visualization.arrayToDataTable([
+          ['DATE', 'ACTIVE CASES', 'REPORTED', 'CRITICAL', 'RECOVERED', 'DECEASED'],
+          {%- for row in case_data -%}
+            {%- autoescape false %}
+              {{ '["{g}", {v}, {r}, {c}, {h}, {d}],'.format(g = row['DATE'], v = row['ACTIVE CASES'], r = row['REPORTED'], c = row['CRITICAL'], h = row['RECOVERED'], d = row['DECEASED']) }}
+            {%- endautoescape %}
+          {%- endfor %}
+        ]);
+
+        var caseOptions = {
+          title: 'Number of Cases',
+          colors: ['#ffa800', '#0072f0', '#d32f2f', '#00b6cb', '#434343'],
+          legend: {
+            alignment: 'end'
+          },
+          titleTextStyle: {
+            fontSize: 20,
+            bold: false
+          },
+          curveType: 'function',
+          seriesType: 'bars',
+          isStacked: true,
+          vAxes: {
+            0: {
+              logScale: false,
+              minValue:0,
+              viewWindow: {
+                min: 0
+              }
+            },
+            1: {
+              logScale: false,
+              minValue:0,
+              viewWindow: {
+                min: 0
+              }
+            }
+          },
+          series: {
+            0: {
+              type: 'line',
+              targetAxisIndex: 1
+            },
+            2: {
+              type: 'line',
+              targetAxisIndex: 0
+            },
+            4: {
+              type: 'line',
+              targetAxisIndex: 0
+            }
+          },
+          chartArea: {
+            top: '12.5%',
+            left: '12.5%',
+            width: '75%',
+            height: '75%'
+          }
+        };
+
+        var caseChart = new google.visualization.ComboChart(document.getElementById('cases-graph'));
+        caseChart.draw(caseData, caseOptions);
+
+      }
+      window.addEventListener('resize', () => drawCharts());
+
+    </script>
+  </head>
+
+  <body>
+    <h1>COVID-19 Virus Outbreak in Greece</h1>
+    <div class="stat-wrapper">
+      <div id="total-cases-counter" class="stat-box">
+        <h2 class="stat-name">Total cases</h2>
+        <p class="stat-value">{{ total_cases }}</p>
+        <p class="stat-diff {{'reverse' if total_cases_diff[0] == '-' else ''}}"><svg id="Layer_1" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="4 0 16 24" enable-background="new 0 0 24 24" style="{{'display:none;' if total_cases_diff == '0.00' }} vertical-align: bottom; transform: scale(0.7, 0.8){{' rotate(180deg)' if total_cases_diff[0] == '-' }}; fill: {{'rgb(244, 67, 54)' if total_cases_diff[0] != '-' else 'rgb(56, 142, 60)'}}; height: 14px;" x="0px" y="0px" ng-style="{'fill': compareDelta.deltaColor,
+          'height': $ctrl.svgHeight}" ng-if="compareDelta.deltaDirection === '+'" class="ng-scope">
+            <polygon points="12,2.7 5,9.7 8,9.7 8,13 16,13 16,9.7 19,9.7 "></polygon>
+            <rect x="8" y="14" width="8" height="3"></rect>
+            <polyline points="16,20 16,18 8,18 8,20 "></polyline>
+            <polyline points="16,22 16,21 8,21 8,22 "></polyline>
+          </svg>{{ total_cases_diff }}%</p>
+      </div>
+      <div id="active-cases-counter" class="stat-box">
+        <h2 class="stat-name">Active cases</h2>
+        <p class="stat-value">{{ active_cases }}</p>
+        <p class="stat-diff {{'reverse' if active_cases_diff[0] == '-' else ''}}"><svg id="Layer_1" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="4 0 16 24" enable-background="new 0 0 24 24" style="{{'display:none;' if active_cases_diff == '0.00' }} vertical-align: bottom; transform: scale(0.7, 0.8){{' rotate(180deg)' if active_cases_diff[0] == '-' }}; fill: {{'rgb(244, 67, 54)' if active_cases_diff[0] != '-' else 'rgb(56, 142, 60)'}}; height: 14px;" x="0px" y="0px" ng-style="{'fill': compareDelta.deltaColor,
+          'height': $ctrl.svgHeight}" ng-if="compareDelta.deltaDirection === '+'" class="ng-scope">
+            <polygon points="12,2.7 5,9.7 8,9.7 8,13 16,13 16,9.7 19,9.7 "></polygon>
+            <rect x="8" y="14" width="8" height="3"></rect>
+            <polyline points="16,20 16,18 8,18 8,20 "></polyline>
+            <polyline points="16,22 16,21 8,21 8,22 "></polyline>
+          </svg>{{ active_cases_diff }}%</p>
+      </div>
+      <div id="deceased-cases-counter" class="stat-box">
+        <h2 class="stat-name">Deceased</h2>
+        <p class="stat-value">{{ deceased_cases }}</p>
+        <p class="stat-diff {{'reverse' if deceased_cases_diff[0] == '-' else ''}}"><svg id="Layer_1" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="4 0 16 24" enable-background="{{'display:none;' if deceased_cases_diff == '0.00' }} new 0 0 24 24" style="vertical-align: bottom; transform: scale(0.7, 0.8){{' rotate(180deg)' if deceased_cases_diff[0] == '-' }}; fill: {{'rgb(244, 67, 54)' if deceased_cases_diff[0] != '-' else 'rgb(56, 142, 60)'}}; height: 14px;" x="0px" y="0px" ng-style="{'fill': compareDelta.deltaColor,
+          'height': $ctrl.svgHeight}" ng-if="compareDelta.deltaDirection === '+'" class="ng-scope">
+            <polygon points="12,2.7 5,9.7 8,9.7 8,13 16,13 16,9.7 19,9.7 "></polygon>
+            <rect x="8" y="14" width="8" height="3"></rect>
+            <polyline points="16,20 16,18 8,18 8,20 "></polyline>
+            <polyline points="16,22 16,21 8,21 8,22 "></polyline>
+          </svg>{{ deceased_cases_diff }}%</p>
+      </div>
+      <div id="discharged-cases-counter" class="stat-box">
+        <h2 class="stat-name">Discharged</h2>
+        <p class="stat-value">{{ recovered_cases }}</p>
+        <p class="stat-diff {{'reverse' if recovered_cases_diff[0] != '-' else ''}}"><svg id="Layer_1" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="4 0 16 24" enable-background="new 0 0 24 24" style="{{'display:none;' if recovered_cases_diff == '0.00' }} vertical-align: bottom; transform: scale(0.7, 0.8){{' rotate(180deg)' if recovered_cases_diff[0] == '-' }}; fill: {{'rgb(244, 67, 54)' if recovered_cases_diff[0] == '-' else 'rgb(56, 142, 60)'}}; height: 14px;" x="0px" y="0px" ng-style="{'fill': compareDelta.deltaColor,
+          'height': $ctrl.svgHeight}" ng-if="compareDelta.deltaDirection === '+'" class="ng-scope">
+            <polygon points="12,2.7 5,9.7 8,9.7 8,13 16,13 16,9.7 19,9.7 "></polygon>
+            <rect x="8" y="14" width="8" height="3"></rect>
+            <polyline points="16,20 16,18 8,18 8,20 "></polyline>
+            <polyline points="16,22 16,21 8,21 8,22 "></polyline>
+          </svg>{{ recovered_cases_diff }}%</p>
+      </div>
+      <div id="cases-graph" class="stat-box">
+
+      </div>
+      <div id="gender-pie" class="stat-box">
+
+      </div>
+      <div id="age-graph" class="stat-box">
+
+      </div>
+    </div>
+    <p>Designed and developed by <a href="https://github.com/Trinityyi">Isabelle Viktoria Maciohsek</a> &copy; 2020</p>
+  </body>
+
+</html>
