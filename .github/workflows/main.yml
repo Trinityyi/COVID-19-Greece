@@ -1,7 +1,7 @@
 name: Daily update
 on:
   schedule:
-    - cron: "30 17 * * *"
+    - cron: "40 17 * * *"
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -14,8 +14,7 @@ jobs:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
         git submodule update --recursive --remote
-        python -m pip install --upgrade pip
-        pip install Flask
-        python ./src/main.py > docs/index.html
+        pip3 install Flask
+        python3 ./src/main.py > docs/index.html
         chmod +x ./src/update.sh
         ./src/update.sh
