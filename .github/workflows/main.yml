@@ -1,7 +1,7 @@
 name: Daily update
 on:
   schedule:
-    - cron: "40 17 * * *"
+    - cron: "0 3 * * *"
 jobs:
   build:
     runs-on: ubuntu-latest
