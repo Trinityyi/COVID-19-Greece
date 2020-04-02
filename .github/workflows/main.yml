@@ -14,6 +14,7 @@ jobs:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
         git submodule update --recursive --remote
-        python3 ./src/main.py
+        pip3 install Flask
+        python3 ./src/main.py > docs/index.html
         chmod +x ./src/update.sh
         ./src/update.sh
