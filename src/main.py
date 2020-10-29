@@ -75,21 +75,21 @@ def build_page():
         continue
       r = {
         'DATE': row['Date'],
-        'ACTIVE CASES': int(row['Confirmed Cases']) - int(row['Deceased Cases']) - int(row['Recovered Cases']),
+        'ACTIVE CASES': int(row['Confirmed Cases']) - int(float(row['Deceased Cases'])) - int(row['Recovered Cases']),
         'REPORTED': int(row['Confirmed Cases']) - total_cases,
         'CRITICAL': int(row['Critical Cases']) if int(row['Critical Cases']) != -1 else critical,
         'RECOVERED': int(row['Recovered Cases']) - recovered,
-        'DECEASED': int(row['Deceased Cases']) - dead
+        'DECEASED': int(float(row['Deceased Cases'])) - dead
       }
 
       if total_cases != 0:
         total_cases_diff = int(row['Confirmed Cases']) / total_cases - 1
 
       if active_cases != 0:
-        active_cases_diff = (int(row['Confirmed Cases']) - int(row['Deceased Cases']) - int(row['Recovered Cases'])) / active_cases - 1
+        active_cases_diff = (int(row['Confirmed Cases']) - int(float(row['Deceased Cases'])) - int(row['Recovered Cases'])) / active_cases - 1
 
       if dead != 0:
-        dead_diff = int(row['Deceased Cases']) / dead - 1
+        dead_diff = int(float(row['Deceased Cases'])) / dead - 1
 
       if critical != 0:
         critical_diff = int(row['Critical Cases']) / critical - 1
@@ -98,10 +98,10 @@ def build_page():
         recovered_diff = int(row['Recovered Cases']) / recovered - 1
 
       total_cases = int(row['Confirmed Cases'])
-      active_cases = int(row['Confirmed Cases'])-int(row['Deceased Cases']) - int(row['Recovered Cases'])
+      active_cases = int(row['Confirmed Cases'])-int(float(row['Deceased Cases'])) - int(row['Recovered Cases'])
       recovered = int(row['Recovered Cases'])
       critical = int(row['Critical Cases']) if int(row['Critical Cases']) != -1 else critical
-      dead = int(row['Deceased Cases'])
+      dead = int(float(row['Deceased Cases']))
       case_data.append(r)
 
   # Load age data
