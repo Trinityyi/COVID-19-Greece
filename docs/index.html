@@ -123,8 +123,8 @@
 
         var genderData = google.visualization.arrayToDataTable([
           ['Gender', 'Cases by Gender'],
-              ["Male", 29262],
-              ["Female", 22991],
+              ["Male", 30693],
+              ["Female", 24115],
         ]);
 
         var genderOptions = {
@@ -448,15 +448,16 @@
               ["10/26/20", 11166, 714, 95, 0, 7],
               ["10/27/20", 12410, 1256, 102, 0, 12],
               ["10/28/20", 10622, 1547, 108, 3325, 10],
-              ["10/29/20", 11821, 1211, 108, 0, 12],
-              ["10/30/20", 13502, 1686, 108, 0, 5],
-              ["10/31/20", 15551, 2055, 108, 0, 6],
-              ["11/1/20", 17220, 1678, 108, 0, 9],
-              ["11/2/20", 18364, 1151, 108, 0, 7],
-              ["11/3/20", 20517, 2166, 108, 0, 13],
-              ["11/4/20", 23145, 2646, 108, 0, 18],
-              ["11/5/20", 26031, 2915, 108, 0, 29],
-              ["11/6/20", 28465, 2447, 108, 0, 13],
+              ["10/29/20", 11821, 1211, 114, 0, 12],
+              ["10/30/20", 13502, 1686, 128, 0, 5],
+              ["10/31/20", 15551, 2055, 135, 0, 6],
+              ["11/1/20", 17220, 1678, 140, 0, 9],
+              ["11/2/20", 18364, 1151, 153, 0, 7],
+              ["11/3/20", 20517, 2166, 169, 0, 13],
+              ["11/4/20", 23145, 2646, 179, 0, 18],
+              ["11/5/20", 26031, 2915, 179, 0, 29],
+              ["11/6/20", 28465, 2447, 179, 0, 13],
+              ["11/7/20", 30986, 2555, 179, 0, 34],
         ]);
 
         var caseOptions = {
@@ -524,36 +525,36 @@
     <div class="stat-wrapper">
       <div id="total-cases-counter" class="stat-box">
         <h2 class="stat-name">Total cases</h2>
-        <p class="stat-value">52254</p>
+        <p class="stat-value">54809</p>
         <p class="stat-diff "><svg id="Layer_1" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="4 0 16 24" enable-background="new 0 0 24 24" style=" vertical-align: bottom; transform: scale(0.7, 0.8); fill: rgb(244, 67, 54); height: 14px;" x="0px" y="0px" ng-style="{'fill': compareDelta.deltaColor,
           'height': $ctrl.svgHeight}" ng-if="compareDelta.deltaDirection === '+'" class="ng-scope">
             <polygon points="12,2.7 5,9.7 8,9.7 8,13 16,13 16,9.7 19,9.7 "></polygon>
             <rect x="8" y="14" width="8" height="3"></rect>
             <polyline points="16,20 16,18 8,18 8,20 "></polyline>
             <polyline points="16,22 16,21 8,21 8,22 "></polyline>
-          </svg>4.91%</p>
+          </svg>4.89%</p>
       </div>
       <div id="active-cases-counter" class="stat-box">
         <h2 class="stat-name">Active cases</h2>
-        <p class="stat-value">28465</p>
+        <p class="stat-value">30986</p>
         <p class="stat-diff "><svg id="Layer_1" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="4 0 16 24" enable-background="new 0 0 24 24" style=" vertical-align: bottom; transform: scale(0.7, 0.8); fill: rgb(244, 67, 54); height: 14px;" x="0px" y="0px" ng-style="{'fill': compareDelta.deltaColor,
           'height': $ctrl.svgHeight}" ng-if="compareDelta.deltaDirection === '+'" class="ng-scope">
             <polygon points="12,2.7 5,9.7 8,9.7 8,13 16,13 16,9.7 19,9.7 "></polygon>
             <rect x="8" y="14" width="8" height="3"></rect>
             <polyline points="16,20 16,18 8,18 8,20 "></polyline>
             <polyline points="16,22 16,21 8,21 8,22 "></polyline>
-          </svg>9.35%</p>
+          </svg>8.86%</p>
       </div>
       <div id="deceased-cases-counter" class="stat-box">
         <h2 class="stat-name">Deceased</h2>
-        <p class="stat-value">715</p>
+        <p class="stat-value">749</p>
         <p class="stat-diff "><svg id="Layer_1" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="4 0 16 24" enable-background=" new 0 0 24 24" style="vertical-align: bottom; transform: scale(0.7, 0.8); fill: rgb(244, 67, 54); height: 14px;" x="0px" y="0px" ng-style="{'fill': compareDelta.deltaColor,
           'height': $ctrl.svgHeight}" ng-if="compareDelta.deltaDirection === '+'" class="ng-scope">
             <polygon points="12,2.7 5,9.7 8,9.7 8,13 16,13 16,9.7 19,9.7 "></polygon>
             <rect x="8" y="14" width="8" height="3"></rect>
             <polyline points="16,20 16,18 8,18 8,20 "></polyline>
             <polyline points="16,22 16,21 8,21 8,22 "></polyline>
-          </svg>1.85%</p>
+          </svg>4.76%</p>
       </div>
       <div id="discharged-cases-counter" class="stat-box">
         <h2 class="stat-name">Discharged</h2>
