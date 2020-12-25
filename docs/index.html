@@ -123,8 +123,8 @@
 
         var genderData = google.visualization.arrayToDataTable([
           ['Gender', 'Cases by Gender'],
-              ["Male", 72017],
-              ["Female", 61347],
+              ["Male", 72486],
+              ["Female", 61748],
         ]);
 
         var genderOptions = {
@@ -484,26 +484,27 @@
               ["12/1/20", 81879, 2199, 596, 0, 111],
               ["12/2/20", 83975, 2185, 613, 0, 89],
               ["12/3/20", 85757, 1882, 622, 0, 100],
-              ["12/4/20", 87307, 1648, 612, 0, 98],
-              ["12/5/20", 88592, 1383, 594, 0, 98],
-              ["12/6/20", 89394, 903, 600, 0, 101],
-              ["12/7/20", 90555, 1250, 600, 0, 89],
-              ["12/8/20", 91777, 1324, 579, 0, 102],
-              ["12/9/20", 93357, 1675, 578, 0, 95],
-              ["12/10/20", 94809, 1533, 571, 0, 81],
-              ["12/11/20", 96102, 1395, 583, 0, 102],
-              ["12/12/20", 97228, 1194, 577, 0, 68],
-              ["12/13/20", 97835, 692, 552, 0, 85],
-              ["12/14/20", 98412, 639, 558, 0, 62],
-              ["12/15/20", 99513, 1199, 550, 0, 98],
-              ["12/16/20", 100613, 1185, 552, 0, 85],
-              ["12/17/20", 101688, 1153, 542, 0, 78],
-              ["12/18/20", 102466, 874, 527, 0, 96],
-              ["12/19/20", 103309, 901, 534, 0, 58],
-              ["12/20/20", 103826, 587, 534, 0, 70],
-              ["12/21/20", 104266, 525, 534, 0, 85],
-              ["12/22/20", 105016, 833, 534, 0, 83],
-              ["12/23/20", 105889, 935, 534, 0, 62],
+              ["12/4/20", 16617, 1648, 612, 70690, 98],
+              ["12/5/20", 17902, 1383, 594, 0, 98],
+              ["12/6/20", 18704, 903, 600, 0, 101],
+              ["12/7/20", 19865, 1250, 600, 0, 89],
+              ["12/8/20", 21087, 1324, 579, 0, 102],
+              ["12/9/20", 22667, 1675, 578, 0, 95],
+              ["12/10/20", 24119, 1533, 571, 0, 81],
+              ["12/11/20", 25412, 1395, 583, 0, 102],
+              ["12/12/20", 26538, 1194, 577, 0, 68],
+              ["12/13/20", 27145, 692, 552, 0, 85],
+              ["12/14/20", 27722, 639, 558, 0, 62],
+              ["12/15/20", 28823, 1199, 550, 0, 98],
+              ["12/16/20", 29923, 1185, 552, 0, 85],
+              ["12/17/20", 30998, 1153, 542, 0, 78],
+              ["12/18/20", 31776, 874, 527, 0, 96],
+              ["12/19/20", 32619, 901, 534, 0, 58],
+              ["12/20/20", 33136, 587, 534, 0, 70],
+              ["12/21/20", 33576, 525, 534, 0, 85],
+              ["12/22/20", 34326, 833, 534, 0, 83],
+              ["12/23/20", 35199, 935, 534, 0, 62],
+              ["12/24/20", 36014, 870, 534, 0, 55],
         ]);
 
         var caseOptions = {
@@ -571,40 +572,40 @@
     <div class="stat-wrapper">
       <div id="total-cases-counter" class="stat-box">
         <h2 class="stat-name">Total cases</h2>
-        <p class="stat-value">133365</p>
+        <p class="stat-value">134235</p>
         <p class="stat-diff "><svg id="Layer_1" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="4 0 16 24" enable-background="new 0 0 24 24" style=" vertical-align: bottom; transform: scale(0.7, 0.8); fill: rgb(244, 67, 54); height: 14px;" x="0px" y="0px" ng-style="{'fill': compareDelta.deltaColor,
           'height': $ctrl.svgHeight}" ng-if="compareDelta.deltaDirection === '+'" class="ng-scope">
             <polygon points="12,2.7 5,9.7 8,9.7 8,13 16,13 16,9.7 19,9.7 "></polygon>
             <rect x="8" y="14" width="8" height="3"></rect>
             <polyline points="16,20 16,18 8,18 8,20 "></polyline>
             <polyline points="16,22 16,21 8,21 8,22 "></polyline>
-          </svg>0.71%</p>
+          </svg>0.65%</p>
       </div>
       <div id="active-cases-counter" class="stat-box">
         <h2 class="stat-name">Active cases</h2>
-        <p class="stat-value">105889</p>
+        <p class="stat-value">36014</p>
         <p class="stat-diff "><svg id="Layer_1" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="4 0 16 24" enable-background="new 0 0 24 24" style=" vertical-align: bottom; transform: scale(0.7, 0.8); fill: rgb(244, 67, 54); height: 14px;" x="0px" y="0px" ng-style="{'fill': compareDelta.deltaColor,
           'height': $ctrl.svgHeight}" ng-if="compareDelta.deltaDirection === '+'" class="ng-scope">
             <polygon points="12,2.7 5,9.7 8,9.7 8,13 16,13 16,9.7 19,9.7 "></polygon>
             <rect x="8" y="14" width="8" height="3"></rect>
             <polyline points="16,20 16,18 8,18 8,20 "></polyline>
             <polyline points="16,22 16,21 8,21 8,22 "></polyline>
-          </svg>0.83%</p>
+          </svg>2.32%</p>
       </div>
       <div id="deceased-cases-counter" class="stat-box">
         <h2 class="stat-name">Deceased</h2>
-        <p class="stat-value">4402</p>
+        <p class="stat-value">4457</p>
         <p class="stat-diff "><svg id="Layer_1" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="4 0 16 24" enable-background=" new 0 0 24 24" style="vertical-align: bottom; transform: scale(0.7, 0.8); fill: rgb(244, 67, 54); height: 14px;" x="0px" y="0px" ng-style="{'fill': compareDelta.deltaColor,
           'height': $ctrl.svgHeight}" ng-if="compareDelta.deltaDirection === '+'" class="ng-scope">
             <polygon points="12,2.7 5,9.7 8,9.7 8,13 16,13 16,9.7 19,9.7 "></polygon>
             <rect x="8" y="14" width="8" height="3"></rect>
             <polyline points="16,20 16,18 8,18 8,20 "></polyline>
             <polyline points="16,22 16,21 8,21 8,22 "></polyline>
-          </svg>1.43%</p>
+          </svg>1.25%</p>
       </div>
       <div id="discharged-cases-counter" class="stat-box">
         <h2 class="stat-name">Discharged</h2>
-        <p class="stat-value">23074</p>
+        <p class="stat-value">93764</p>
         <p class="stat-diff reverse"><svg id="Layer_1" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="4 0 16 24" enable-background="new 0 0 24 24" style="display:none; vertical-align: bottom; transform: scale(0.7, 0.8); fill: rgb(56, 142, 60); height: 14px;" x="0px" y="0px" ng-style="{'fill': compareDelta.deltaColor,
           'height': $ctrl.svgHeight}" ng-if="compareDelta.deltaDirection === '+'" class="ng-scope">
             <polygon points="12,2.7 5,9.7 8,9.7 8,13 16,13 16,9.7 19,9.7 "></polygon>
