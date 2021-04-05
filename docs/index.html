@@ -123,8 +123,8 @@
 
         var genderData = google.visualization.arrayToDataTable([
           ['Gender', 'Cases by Gender'],
-              ["Male", 147667],
-              ["Female", 125791],
+              ["Male", 143215],
+              ["Female", 132198],
         ]);
 
         var genderOptions = {
@@ -155,10 +155,10 @@
 
         var ageData = google.visualization.arrayToDataTable([
           ['Age Group', 'Age Distribution'],
-              ["65+", 0.11],
-              ["40-64", 0.37],
-              ["18-39", 0.44],
-              ["0-17", 0.08],
+              ["65+", 0.17],
+              ["40-64", 0.42],
+              ["18-39", 0.34],
+              ["0-17", 0.07],
         ]);
 
         var ageView = new google.visualization.DataView(ageData);
@@ -584,27 +584,28 @@
               ["3/11/21", 113960, 2570, 506, 0, 51],
               ["3/12/21", 116268, 2357, 521, 0, 49],
               ["3/13/21", 118719, 2503, 545, 0, 52],
-              ["3/14/21", 120292, 1626, 545, 0, 53],
-              ["3/15/21", 121380, 1134, 545, 0, 46],
-              ["3/16/21", 122829, 1508, 545, 0, 59],
-              ["3/17/21", 126231, 3458, 545, 0, 56],
-              ["3/18/21", 129256, 3070, 545, 0, 45],
-              ["3/19/21", 131954, 2762, 545, 0, 64],
-              ["3/20/21", 134426, 2532, 545, 0, 60],
-              ["3/21/21", 135899, 1514, 545, 0, 41],
-              ["3/22/21", 137535, 1705, 545, 0, 69],
-              ["3/23/21", 141001, 3517, 545, 0, 51],
-              ["3/24/21", 143992, 3058, 545, 0, 67],
-              ["3/25/21", 146527, 2587, 545, 0, 52],
-              ["3/26/21", 147940, 1466, 545, 0, 53],
-              ["3/27/21", 151000, 3132, 545, 0, 72],
-              ["3/28/21", 152387, 1441, 545, 0, 54],
-              ["3/29/21", 154046, 1724, 545, 0, 65],
-              ["3/30/21", 158296, 4322, 545, 0, 72],
-              ["3/31/21", 161832, 3612, 545, 0, 76],
-              ["4/1/21", 165248, 3483, 545, 0, 67],
-              ["4/2/21", 168234, 3058, 545, 0, 72],
-              ["4/3/21", 171393, 3229, 545, 0, 70],
+              ["3/14/21", 120292, 1626, 564, 0, 53],
+              ["3/15/21", 121380, 1134, 564, 0, 46],
+              ["3/16/21", 122829, 1508, 605, 0, 59],
+              ["3/17/21", 126231, 3458, 630, 0, 56],
+              ["3/18/21", 129256, 3070, 645, 0, 45],
+              ["3/19/21", 131954, 2762, 649, 0, 64],
+              ["3/20/21", 134426, 2532, 672, 0, 60],
+              ["3/21/21", 135899, 1514, 674, 0, 41],
+              ["3/22/21", 137535, 1705, 681, 0, 69],
+              ["3/23/21", 141001, 3517, 699, 0, 51],
+              ["3/24/21", 143992, 3058, 699, 0, 67],
+              ["3/25/21", 146527, 2587, 706, 0, 52],
+              ["3/26/21", 147940, 1466, 707, 0, 53],
+              ["3/27/21", 151000, 3132, 728, 0, 72],
+              ["3/28/21", 152387, 1441, 735, 0, 54],
+              ["3/29/21", 154046, 1724, 738, 0, 65],
+              ["3/30/21", 158296, 4322, 741, 0, 72],
+              ["3/31/21", 161832, 3612, 739, 0, 76],
+              ["4/1/21", 165248, 3483, 755, 0, 67],
+              ["4/2/21", 168234, 3058, 753, 0, 72],
+              ["4/3/21", 171393, 3229, 755, 0, 70],
+              ["4/4/21", 173270, 1955, 755, 0, 78],
         ]);
 
         var caseOptions = {
@@ -675,36 +676,36 @@
     <div class="stat-wrapper">
       <div id="total-cases-counter" class="stat-box">
         <h2 class="stat-name">Total cases</h2>
-        <p class="stat-value">273459</p>
+        <p class="stat-value">275414</p>
         <p class="stat-diff "><svg id="Layer_1" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="4 0 16 24" enable-background="new 0 0 24 24" style=" vertical-align: bottom; transform: scale(0.7, 0.8); fill: rgb(244, 67, 54); height: 14px;" x="0px" y="0px" ng-style="{'fill': compareDelta.deltaColor,
           'height': $ctrl.svgHeight}" ng-if="compareDelta.deltaDirection === '+'" class="ng-scope">
             <polygon points="12,2.7 5,9.7 8,9.7 8,13 16,13 16,9.7 19,9.7 "></polygon>
             <rect x="8" y="14" width="8" height="3"></rect>
             <polyline points="16,20 16,18 8,18 8,20 "></polyline>
             <polyline points="16,22 16,21 8,21 8,22 "></polyline>
-          </svg>1.19%</p>
+          </svg>0.71%</p>
       </div>
       <div id="active-cases-counter" class="stat-box">
         <h2 class="stat-name">Active cases</h2>
-        <p class="stat-value">171393</p>
+        <p class="stat-value">173270</p>
         <p class="stat-diff "><svg id="Layer_1" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="4 0 16 24" enable-background="new 0 0 24 24" style=" vertical-align: bottom; transform: scale(0.7, 0.8); fill: rgb(244, 67, 54); height: 14px;" x="0px" y="0px" ng-style="{'fill': compareDelta.deltaColor,
           'height': $ctrl.svgHeight}" ng-if="compareDelta.deltaDirection === '+'" class="ng-scope">
             <polygon points="12,2.7 5,9.7 8,9.7 8,13 16,13 16,9.7 19,9.7 "></polygon>
             <rect x="8" y="14" width="8" height="3"></rect>
             <polyline points="16,20 16,18 8,18 8,20 "></polyline>
             <polyline points="16,22 16,21 8,21 8,22 "></polyline>
-          </svg>1.88%</p>
+          </svg>1.10%</p>
       </div>
       <div id="deceased-cases-counter" class="stat-box">
         <h2 class="stat-name">Deceased</h2>
-        <p class="stat-value">8302</p>
+        <p class="stat-value">8380</p>
         <p class="stat-diff "><svg id="Layer_1" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="4 0 16 24" enable-background=" new 0 0 24 24" style="vertical-align: bottom; transform: scale(0.7, 0.8); fill: rgb(244, 67, 54); height: 14px;" x="0px" y="0px" ng-style="{'fill': compareDelta.deltaColor,
           'height': $ctrl.svgHeight}" ng-if="compareDelta.deltaDirection === '+'" class="ng-scope">
             <polygon points="12,2.7 5,9.7 8,9.7 8,13 16,13 16,9.7 19,9.7 "></polygon>
             <rect x="8" y="14" width="8" height="3"></rect>
             <polyline points="16,20 16,18 8,18 8,20 "></polyline>
             <polyline points="16,22 16,21 8,21 8,22 "></polyline>
-          </svg>0.85%</p>
+          </svg>0.94%</p>
       </div>
       <div id="discharged-cases-counter" class="stat-box">
         <h2 class="stat-name">Discharged</h2>
